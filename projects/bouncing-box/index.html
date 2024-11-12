@@ -7,10 +7,12 @@
 	<script src="jquery.min.js"></script>
 	<style>
 		.box {
-			width: 70px;
-			height: 70px;
-			background-color: teal;
-			font-size: 300%;
+			width: 100px;
+			height: 100px;
+			background-image: linear-gradient(rgb(183, 0, 255), rgb(0, 47, 255));
+			border-radius: 25%;
+			font-size: 400%;
+			font-family: fantasy;
 			text-align: center;
 			user-select: none;
 			display: block;
@@ -18,10 +20,24 @@
 			top: 100px;
 			/* Change me! */
 			left: 0px;
+			top: 400px;
 		}
 
 		.board {
 			height: 100vh;
+			background-image: linear-gradient(rgb(255, 255, 255), rgb(0, 214, 252));
+		}
+
+		h1 {
+			font-family: fantasy;
+			font-size: 60px
+		}
+		p {
+			font-family: fantasy
+		}
+		h2 {
+			font-size: 40px;
+			font-family: fantasy;
 		}
 	</style>
 	<!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
@@ -30,7 +46,13 @@
 
 <body class="board">
 	<!-- HTML for the box -->
-	<div class="box">?</div>
+	<h1>Welcome to the Bouncing Boss!</h1>
+	<p>Click the box to deal damage to it! You have to get him to 0 to kill him.</p>
+	<p>Clicking him speeds him up, increasing the difficulty of the boss. You have unlimited clicks</p>
+	<p>BUT! Everytime the boss hits the sides, he heals one health, slows down, and takes a life.</p>
+	<p>If you lose all your health, you die :(</p>
+	<h2>HEALTH: 20</h2>
+	<div class="box">20</div>
 
 	<script>
 		(function () {
@@ -43,6 +65,7 @@
 
 			var box = jQuery('.box');	// reference to the HTML .box element
 			var board = jQuery('.board');	// reference to the HTML .board element
+			var healthbar = jQuery('h2')
 			var boardWidth = board.width();	// the maximum X-Coordinate of the screen
 
 			// Every 50 milliseconds, call the update Function (see below)
@@ -56,9 +79,20 @@
 				box.css("left", newPositionX);
 			}
 
+			// moves the Box to a new position on the screen along the Y-Axis
+			function moveBoxYTo(newPositionY) {
+				box.css("top", newPositionY);
+			}
+
 			// changes the text displayed on the Box
 			function changeBoxText(newText) {
 				box.text(newText);
+			}
+			function changeHealthText(newText) {
+				healthbar.text(newText);
+			}
+			function getRandomInt(max) {
+ 			 return Math.floor(Math.random() * max);
 			}
 
 			//////////////////////////////////////////////////////////////////
@@ -66,8 +100,12 @@
 			//////////////////////////////////////////////////////////////////
 
 			// TODO 2 - Variable declarations 
-
-
+var positionX = 0
+var positionY = 100
+var score = 20
+var speed = 10
+var add = 2
+var health = 20
 
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
@@ -75,8 +113,42 @@
 			turn it around! 
 			*/
 			function update() {
-
-
+				positionX = positionX + speed
+				moveBoxTo(positionX)
+				if (positionX > boardWidth) {
+					speed= -speed
+					if (speed > 0) {
+					speed = speed + 2
+					}				
+					score = score + 1
+					health = health - 1
+					changeBoxText(score)
+					changeHealthText("HEALTH: " + health)
+					
+				}
+				if (positionX <  0){
+					speed = -speed
+					if (speed < 0) {
+					speed = speed - 2
+					}
+					score = score + 1
+					health = health - 1
+					changeBoxText(score)
+					changeHealthText("HEALTH: " + health)
+				}
+				if (score < 1) {
+					score = ":()"
+					changeBoxText(score)
+					speed = 0
+					add = 0					
+				}
+				if (health < 1) {
+						score = ">:)"
+						changeBoxText(score)
+						speed = 0
+						add = 0	
+				}	
+				
 			};
 
 			/* 
@@ -85,12 +157,16 @@
 			the left side of the screen.
 			*/
 			function handleBoxClick() {
-
-
-			};
-
-
-
+				positionX = 800
+				score = score - 1
+				changeBoxText(score)				
+				if (speed > 0) {
+					speed = speed + add
+				}
+				else {
+					speed = speed - add 
+				}
+			}
 
 
 		})();
