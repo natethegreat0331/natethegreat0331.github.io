@@ -1,17 +1,17 @@
 body {
-    background: rgb(24, 59, 99);
+     animation: color-change 20s infinite alternate; /* Applies the animation */
     color: rgb(6, 10, 44);
     padding: 10px;
     font-family: perpetua;
 }
 #all-contents {
-  max-width: 800px;
+  max-width: 1500px;
     margin: auto;
 }
 
 /* navigation menu */
 nav {
-    background: rgb(36, 92, 117);
+    background: rgb(255, 0, 0);
    margin: 0 auto;
     display: flex;
     padding: 10px;
@@ -45,6 +45,12 @@ main {
     background: rgb(219, 219, 219);
     display: flex;
     border: ridge darkblue;
+    position: relative;
+    z-index: 1;
+    width: 500px;
+}
+.indexmain {
+    margin-top:-300px
 }
 .sidebar {
     margin-right: 25px;
@@ -131,4 +137,47 @@ main {
         align-content: center;
         justify-content: center;
     }
+}
+@keyframes color-change {
+  0% {
+    background-color: #ff5733; /* Start color */
+  }
+  25% {
+    background-color: #33ff57; /* Intermediate color 1 */
+  }
+  50% {
+    background-color: #3357ff; /* Intermediate color 2 */
+  }
+  75% {
+    background-color: #ff33a8; /* Intermediate color 3 */
+  }
+  100% {
+    background-color: #ff5733; /* End color (back to start) */
+  }
+}
+
+#img1 {
+    scale:.2;
+    position: relative;
+    z-index: 100
+}
+iframe  {
+    margin-left:1300px;
+
+}
+
+.liar {
+    font-size: 10px;
+    margin-top:-20px
+}
+.hollow {
+    margin-left:1850px;
+    width:30px
+}
+#gamestext {
+    color:#454545;
+    font-family: perpetua
+}
+.gamesmain {
+    width: 1000px
 }

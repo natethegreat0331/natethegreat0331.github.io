@@ -4,7 +4,7 @@
         <title>Images</title>
       <style>
 body {
-    background: rgb(24, 59, 99);
+    animation: color-change 20s infinite alternate;
     color: rgb(6, 10, 44);
     padding: 10px;
     font-family: perpetua;
@@ -17,7 +17,7 @@ body {
          
             /* navigation menu */
             nav {
-    background: rgb(36, 92, 117);
+    background: rgb(255, 0, 0);
    margin: 0 auto;
     display: flex;
     padding: 10px;
@@ -156,7 +156,23 @@ body {
   from {opacity: .4}
   to {opacity: 1}
 }
-
+@keyframes color-change {
+  0% {
+    background-color: #ff5733; /* Start color */
+  }
+  25% {
+    background-color: #33ff57; /* Intermediate color 1 */
+  }
+  50% {
+    background-color: #3357ff; /* Intermediate color 2 */
+  }
+  75% {
+    background-color: #ff33a8; /* Intermediate color 3 */
+  }
+  100% {
+    background-color: #ff5733; /* End color (back to start) */
+  }
+}
       </style>
     </head>
     <body>
