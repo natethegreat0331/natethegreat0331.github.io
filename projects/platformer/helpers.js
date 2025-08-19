@@ -375,7 +375,7 @@ function deathOfPlayer() {
   );
   ctx.font = "500% serif";
   ctx.fillText(
-    "bro really died in 2024 ☠️",
+    "bro really died in 2025 ☠️",
     canvas.width / 3.9,
     canvas.height / 6 + canvas.height / 3,
     (canvas.width / 16) * 14

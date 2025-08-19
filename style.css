@@ -41,7 +41,7 @@ a {
 }
 
 /* main container area beneath menu */
-main {
+.indexmain {
     background: rgb(219, 219, 219);
     display: flex;
     border: ridge darkblue;
@@ -159,10 +159,12 @@ main {
 #img1 {
     scale:.2;
     position: relative;
-    z-index: 100
+    z-index: 100;
+    margin-top: 200px
 }
 iframe  {
     margin-left:1300px;
+    
 
 }
 
@@ -170,14 +172,45 @@ iframe  {
     font-size: 10px;
     margin-top:-20px
 }
-.hollow {
+.among {
     margin-left:1850px;
-    width:30px
+    width:40px
 }
 #gamestext {
     color:#454545;
     font-family: perpetua
+
 }
 .gamesmain {
-    width: 1000px
+    height: 300px;
+    width: 800px;
+    background: rgb(219, 219, 219);
+    border: ridge darkblue;
+    position: relative;
+    z-index: 1;
+
+}
+.gamebutt {
+    font-family: perpetua;
+    font-size: 30px;
+    width: 100;
+    color: black;
+    border-width: 5px;
+    border-style: double;
+    
+}
+#cool {
+    margin-left: 850px;
+    margin-top: -500px
+}
+#awesome {
+  margin-top: -700px
+}
+#amazing {
+   
+}
+}
+
+#blabber {
+    font-size: 20px
 }
