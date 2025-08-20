@@ -182,7 +182,7 @@ iframe  {
 
 }
 .gamesmain {
-    height: 300px;
+    height: 400px;
     width: 800px;
     background: rgb(219, 219, 219);
     border: ridge darkblue;
@@ -192,7 +192,7 @@ iframe  {
 }
 .gamebutt {
     font-family: perpetua;
-    font-size: 30px;
+    font-size: 20px;
     width: 100;
     color: black;
     border-width: 5px;
@@ -206,10 +206,7 @@ iframe  {
 #awesome {
   margin-top: -700px
 }
-#amazing {
-   
-}
-}
+
 
 #blabber {
     font-size: 20px
