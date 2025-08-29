@@ -13,6 +13,7 @@ var highScoreElement = $("#highScore");
 var score = 0; // variable to keep track of the score
 var started = false; // variable to keep track of whether the game has started
 var apple = {}
+var evilApple = {}
 const snake = {}
 
 // TODO 4, Part 1: Create the apple variable
@@ -58,6 +59,9 @@ makeSnakeSquare(10, 8); // Create a third square to the left of the second
 snake.head = snake.body[0]; // Mark the first segment as the head
   // TODO 4, Part 3: initialize the apple
  makeApple()
+ makeEvilApple()
+
+
 
   // TODO 6, Part 1: Initialize the interval
 updateInterval = setInterval(update, 100);
@@ -84,6 +88,9 @@ if (hasHitWall() || hasCollidedWithSnake()) {
 
 if (hasCollidedWithApple()) {
   handleAppleCollision();
+}
+if (hasCollidedWithEvilApple()) {
+  handleEvilAppleCollision();
 }
 
 }
@@ -210,6 +217,20 @@ if (apple.row === snake.head.row && apple.column === snake.head.column) {
 
   return false;
 }
+function hasCollidedWithEvilApple() {
+  /* 
+    TODO 12: Should return true if the snake's head has collided with the apple, 
+    false otherwise
+    
+    HINT: Both the apple and the snake's head are aware of their own row and column
+  */
+if (evilApple.row === snake.head.row && evilApple.column === snake.head.column) {
+  return true
+}
+
+
+  return false;
+}
 
 function handleAppleCollision() {
   // increase the score and update the score DOM element
@@ -219,6 +240,20 @@ function handleAppleCollision() {
   // Remove existing Apple and create a new one
   apple.element.remove();
   makeApple();
+
+  var row = snake.tail.row;
+  var column = snake.tail.column;
+  
+  makeSnakeSquare(row, column);
+}
+function handleEvilAppleCollision() {
+  // increase the score and update the score DOM element
+  score++;
+  scoreElement.text("Score: " + score);
+
+  // Remove existing Apple and create a new one
+  evilApple.element.remove();
+  makeEvilApple();
 
   var row = snake.tail.row;
   var column = snake.tail.column;
@@ -282,6 +317,23 @@ apple.column = randomPosition.column;
 
 // position the apple on the screen
 repositionSquare(apple);
+
+
+}
+function makeEvilApple() {
+  // TODO 4, Part 2: Fill in this function's code block
+// make the apple jQuery Object and append it to the board
+evilApple.element = $("<div>").addClass("evilapple").appendTo(board);
+
+// get a random available row/column on the board
+var randomPosition = getRandomAvailablePosition();
+
+// initialize the row/column properties on the Apple Object
+evilApple.row = randomPosition.row;
+evilApple.column = randomPosition.column;
+
+// position the apple on the screen
+repositionSquare(evilApple);
 
 
 }
