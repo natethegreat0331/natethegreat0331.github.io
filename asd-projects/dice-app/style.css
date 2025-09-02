@@ -1,0 +1,25 @@
+#die {
+   left: 900px;
+   top: 400px;
+   scale: 2.5;
+  height: 100px;
+  width: 100px;
+  background-color: rgb(255, 0, 0); /* Feel free to customize */
+  position: absolute;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black;
+  z-index: 1
+}
+body {
+    background-color: rgb(255, 111, 111);
+}
+h1 {
+    position: absolute;
+     left: 947.5px;
+   top: 480px;
+   scale: 40;
+   z-index:0;
+   font-family: sans-serif;
+   color: rgba(255, 48, 48, 0.445)
+}

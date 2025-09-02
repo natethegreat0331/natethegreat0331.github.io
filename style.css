@@ -174,7 +174,8 @@ iframe  {
 }
 .among {
     margin-left:1850px;
-    width:40px
+    width:40px;
+    position: absolute
 }
 #gamestext {
     color:#454545;
