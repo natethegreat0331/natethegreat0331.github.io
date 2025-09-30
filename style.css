@@ -222,7 +222,7 @@ iframe  {
   position: absolute;
   bottom: 20px;
   right: 20px;
-  background-color: rgba(0, 252, 231, 0.5);
+  background-color: git rgba(223, 0, 252, 0.5);
   color: rgb(0, 0, 0);
   padding-left: 20px;
   padding-right: 20px;
@@ -236,7 +236,7 @@ iframe  {
 .peakimage {
     border-style:groove;
     border-width: 10px;
-    border-color: rgb(0, 255, 170)
+    border-color: rgb(225, 0, 255)
 }#userInput {
     position: absolute;
     background-color: rgba(0, 0, 0, 0);
