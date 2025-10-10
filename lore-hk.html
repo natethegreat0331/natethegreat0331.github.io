@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Nate's Great Website</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <body class="lorebody">
+        <!-- Visible HTML elements GO HERE  -->
+        
+         <div id="all-contents">
+            <nav class="lorenav">
+                <h1>Nate the Great's Hollow Knight Lore Compendium</h1>
+                <ul id="nav-ul">
+                    <li class="nav-li">
+                      <a href="index.html"> Home </a>
+                    </li>
+                    <li class="nav-li">
+                      <a href="portfolio.html"> Portfolio </a>
+                    </li>
+                    <li class="nav-li">
+                        <a href="images.html"> Images </a>
+                      </li>
+                    <li class="nav-li">
+                        <a href="lore-hk.html"> Australia Lore </a>
+                      </li>
+                </ul>
+            </nav>
+            <img src="assets/logo.png" alt="logo" id="logo">
+            <div style="display: flex; align-items: flex-start; gap: 40px">
+              <div class="tableofcontents">
+                <a href="lore-ss.html" class="switch"> <img src="assets/switchSS.jpg" alt="Silksong Logo"> </a>
+                <h2>Table of Contents</h2>
+                <h3 id="topic">Story Breakdown</h3>
+                <ul id="catagory" class="0-0-">The Founding of Hallownest</ul>
+                <ul id="catagory" class="0-1-">The Radiance's Plight</ul>
+                <ul id="catagory" class="0-2-">The Sealing of the Knight</ul>
+                <ul id="catagory" class="0-3-">The Fall of the Kingdom</ul>
+                <ul id="catagory" class="0-4-">The Return of the Vessel</ul>
+                <ul id="catagory" class="0-5-">The Conclusions</ul>
+                <h3 id="topic"> Prominent Characters</h3>
+                 <ul id="catagory" class="1-0-">The Knight/Other Vessels</ul>
+                <ul id="catagory" class="1-1-">The Hollow Knight</ul>
+                <ul id="catagory" class="1-2-">The Pale King and White Lady</ul>
+                <ul id="catagory" class="1-3-">The Radiance/the Infection</ul>
+                <ul id="catagory" class="1-4-">Hornet</ul>
+                <ul id="catagory" class="1-5-">The Dreamers</ul>
+                <ul id="catagory" class="1-6-">Quirell</ul>
+                <ul id="catagory" class="1-7-">The Nailmasters and Sly</ul>
+                <ul id="catagory" class="1-8-">The Five Great Knights</ul>
+                <ul id="catagory" class="1-9-">Miscellaneous Characters</ul>
+                <h3 id="topic">The Factions</h3>
+                 <ul id="catagory" class="2-0-">The Mantis Tribe</ul>
+                <ul id="catagory" class="2-1-">The Moths</ul>
+                <ul id="catagory" class="2-2-">The Grimm Troupe</ul>
+                <ul id="catagory" class="2-3-">The Godseekers/Godhome</ul>
+                <ul id="catagory" class="2-4-">The Snail Shamans</ul>
+                <ul id="catagory" class="2-5-">The Weavers/Spiders</ul>
+                <ul id="catagory" class="2-6-">The Hive</ul>
+                <ul id="catagory" class="2-7-">Miscellaneous Factions</ul>
+                <h3 id="topic">Locations</h3>
+                 <ul id="catagory" class="3-0-">Dirtmouth</ul>
+                <ul id="catagory" class="3-1-">Forgotten Crossroads</ul>
+                <ul id="catagory" class="3-2-">Greenpath and the Queen Gardens</ul>
+                <ul id="catagory" class="3-3-">Fungal Wastes/Fog Canyon</ul>
+                <ul id="catagory" class="3-4-">City of Tears/Royal Waterways</ul>
+                <ul id="catagory" class="3-5-">The Abyss/Ancient Basin</ul>
+                <ul id="catagory" class="3-6-">The White Palace</ul>
+                <ul id="catagory" class="3-7-">Deepnest</ul>
+                <ul id="catagory" class="3-8-">Kingdom's Edge</ul>
+                <ul id="catagory" class="3-9-">Crystal Peak</ul>
+                <ul id="catagory" class="3-10-">The Dream Realm</ul>
+                                <h3 id="topic">Substances</h3>
+                 <ul id="catagory" class="4-0-">Soul</ul>
+                <ul id="catagory" class="4-1-">Essence</ul>
+                <ul id="catagory" class="4-2-">Void</ul>
+                <ul id="catagory" class="4-3-">Lifeblood</ul>
+              </div>
+              <div class="loredocuments">
+          <img id="topicarrow" class="left-arrow" src="assets/arrow-left.png">
+           <img id="topicarrow" class="right-arrow" src="assets/arrow-right.png">
+                <img class="loreimage"src="lore-hk-images/0-0-0.png">
+              </div>
+            </div>
+            <script>
+              
+              $(".0-0-").on("click", switchCatagory)
+              $(".0-1-").on("click", switchCatagory)
+              $(".0-2-").on("click", switchCatagory)
+              $(".0-3-").on("click", switchCatagory)
+              $(".0-4-").on("click", switchCatagory)
+              $(".0-5-").on("click", switchCatagory)
+              $(".left-arrow").on("click", switchPage)
+              $(".right-arrow").on("click", switchPage)
+
+              // Helper: try to preload an image and call onSuccess only if it loads
+              function tryLoadImage(src, onSuccess, onError) {
+                var img = new Image();
+                img.onload = function() { if (onSuccess) onSuccess(); };
+                img.onerror = function() { if (onError) onError(); };
+                img.src = src;
+              }
+
+              function switchCatagory() {
+                var page = 0;
+                var catagory = $(this).attr("class");
+                var image = "lore-hk-images/" + catagory + page + ".png";
+                console.log("attempting to load: ", image);
+                tryLoadImage(image, function() {
+                  $(".loreimage").attr("src", image);
+                }, function() {
+                  console.log("Image not found, keeping current slide: ", image);
+                });
+              }
+
+              function switchPage(event) {
+                // which arrow was clicked
+                event = event || window.event;
+                var currentImage = $(".loreimage").attr("src");
+                var parts = currentImage.split("/");
+                var fileName = parts[parts.length - 1];
+                var nameParts = fileName.split(".")[0].split("-");
+                // guard: ensure we have the expected filename format
+                if (nameParts.length < 3) return;
+                var catagory = nameParts[0] + "-" + nameParts[1] + "-";
+                var page = parseInt(nameParts[2], 10);
+                if ($(event.currentTarget).hasClass("left-arrow")) {
+                  if (page > 0) {
+                    page -= 1;
+                  }
+                } else if ($(event.currentTarget).hasClass("right-arrow")) {
+                  // adjust max page as needed; here we conservatively check up to 99
+                  page += 1;
+                }
+                var image = "lore-hk-images/" + catagory + page + ".png";
+                console.log("attempting to load: ", image);
+                tryLoadImage(image, function() {
+                  $(".loreimage").attr("src", image);
+                }, function() {
+                  console.log("Image not found, keeping current slide: ", image);
+                });
+              }
+            </script>
+            <audio id="bgAudio" autoplay muted loop playsinline>
+              <source src="assets/Hollow Knight OST - Hollow Knight 4.mp3" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+        </div>
+    </body>
+    <script>
+      // attempt autoplay (muted ensures browsers allow autoplay); unmute on first user interaction
+      document.addEventListener('DOMContentLoaded', function () {
+        const audio = document.getElementById('bgAudio');
+        if (!audio) return;
+        // try play now (muted autoplay usually succeeds)
+        audio.play().catch(() => console.log('autoplay attempt failed'));
+
+        // unmute and set sensible volume on first user gesture
+        function enableSound() {
+          audio.muted = false;
+          audio.volume = 0.7;
+          audio.play().catch(()=>{});
+        }
+        document.addEventListener('click', enableSound, { once: true });
+        document.addEventListener('keydown', enableSound, { once: true });
+      });
+    </script>
+</html>
