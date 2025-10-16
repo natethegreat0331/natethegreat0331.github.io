@@ -2,6 +2,7 @@
 <html>
   <head>
     <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="index.css" />
@@ -14,6 +15,20 @@
     <div id="button-box">
       <button id="apply">Apply Filter</button>
       <button id="reset">Reset Image</button>
+      <button id="clear" onclick="clearQueue()">Clear Queue</button>
+      <h2>Filter List</h2>
+      <input type="checkbox" onclick="toggleBG()">No Background</input>
+      <ul>
+        <li><button onclick="addToQueue(reddify)">Reddify</button></li>
+        <li><button onclick="addToQueue(decreaseBlue)">Decrease Blue</button></li>
+        <li><button onclick="addToQueue(increaseGreenByBlue)">Increase Green by Blue</button></li>
+        <li><button onclick="addToQueue(spookyInversion)">SpoOoOky Inversion</button></li>
+        <li><button onclick="addToQueue(iLovePurple)">I Luv Purple <3 </button></li>
+        <li><button onclick="addToQueue(shadowifyLikeTheHedgehog)">Shadowify (Like The Hedgehog)</button></li>
+        <li><button onclick="addToQueue(boringGray)">BOOORRRINNNG Gray</button></li>
+      </ul>
+      <h2>Queue List (click to clear)</h2>
+      <ul id="queue-list"></ul>
     </div>
   </body>
 </html>

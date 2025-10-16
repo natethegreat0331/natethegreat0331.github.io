@@ -26,3 +26,6 @@ button {
 #reset {
   background: red;
 }
+#clear {
+  background: rgb(68, 0, 255);
+}
